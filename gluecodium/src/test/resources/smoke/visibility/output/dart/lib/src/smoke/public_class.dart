@@ -3,12 +3,13 @@ import 'package:library/src/_library_context.dart' as __lib;
 import 'package:library/src/_native_base.dart' as __lib;
 import 'package:library/src/_token_cache.dart' as __lib;
 import 'package:library/src/builtin_types__conversion.dart';
+import 'package:library/src/generic_types__conversion.dart';
 abstract class PublicClass {
   /// @nodoc
   @Deprecated("Does nothing")
   void release();
   /// @nodoc
-  PublicClass_InternalStruct internal_internalMethod(PublicClass_InternalStruct input);
+  PublicClass_InternalStructTypeDef internal_internalMethod(PublicClass_InternalStruct input);
   /// @nodoc
   PublicClass_InternalStruct get internal_internalStructProperty;
   /// @nodoc
@@ -17,6 +18,12 @@ abstract class PublicClass {
   /// @nodoc
   set internal_internalSetterProperty(String value);
 }
+/// @nodoc
+typedef internal_PublicClass_InternalArray = List<PublicClass_InternalStruct>;
+/// @nodoc
+typedef internal_PublicClass_InternalStructTypeDef = PublicClass_InternalStruct;
+/// @nodoc
+typedef internal_PublicClass_StringToInternalStructMap = Map<String, PublicClass_InternalStruct>;
 /// @nodoc
 enum PublicClass_InternalEnum {
     foo,
@@ -297,7 +304,7 @@ class PublicClass$Impl extends __lib.NativeBase implements PublicClass {
   @override
   void release() {}
   @override
-  PublicClass_InternalStruct internal_internalMethod(PublicClass_InternalStruct input) {
+  PublicClass_InternalStructTypeDef internal_internalMethod(PublicClass_InternalStruct input) {
     final _internalMethodFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<Pointer<Void> Function(Pointer<Void>, Int32, Pointer<Void>), Pointer<Void> Function(Pointer<Void>, int, Pointer<Void>)>('library_smoke_PublicClass_internalMethod__InternalStruct'));
     final _inputHandle = smokePublicclassInternalstructToFfi(input);
     final _handle = this.handle;

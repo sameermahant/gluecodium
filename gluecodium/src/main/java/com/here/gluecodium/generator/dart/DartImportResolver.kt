@@ -54,12 +54,12 @@ internal class DartImportResolver(
         }
 
     private fun resolveTypeImports(limeType: LimeType): List<DartImport> =
-        when (val actualType = limeType.actualType) {
-            is LimeBasicType -> resolveBasicTypeImports(actualType)
-            is LimeGenericType -> resolveGenericTypeImports(actualType)
+        when (limeType) {
+            is LimeBasicType -> resolveBasicTypeImports(limeType)
+            is LimeGenericType -> resolveGenericTypeImports(limeType)
             else -> listOfNotNull(
-                createImport(actualType),
-                resolveExternalImport(actualType, IMPORT_PATH_NAME, useAlias = true)
+                createImport(limeType),
+                resolveExternalImport(limeType, IMPORT_PATH_NAME, useAlias = true)
             )
         }
 

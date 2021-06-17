@@ -63,6 +63,9 @@ abstract class {{resolveName}} {{#if this.parent}}implements {{resolveName this.
 {{/ifPredicate}}
 }
 
+{{#typeAliases}}
+{{>dart/DartTypeAlias}}
+{{/typeAliases}}
 {{#enumerations}}
 {{>dart/DartEnumeration}}
 {{/enumerations}}

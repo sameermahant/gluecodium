@@ -13,7 +13,7 @@ abstract class Class implements Interface {
   /// @nodoc
   @Deprecated("Does nothing")
   void release();
-  Struct fun(List<Struct> double);
+  Struct fun(List_Struct double);
   Enum get property;
   set property(Enum value);
   /// @nodoc
@@ -72,7 +72,7 @@ class Class$Impl extends __lib.NativeBase implements Class {
     return __resultHandle;
   }
   @override
-  Struct fun(List<Struct> double) {
+  Struct fun(List_Struct double) {
     final _funFfi = __lib.catchArgumentError(() => __lib.nativeLibrary.lookupFunction<Pointer<Void> Function(Pointer<Void>, Int32, Pointer<Void>), Pointer<Void> Function(Pointer<Void>, int, Pointer<Void>)>('library_package_Class_fun__ListOf_package_Types_Struct'));
     final _doubleHandle = foobarListofPackageTypesStructToFfi(double);
     final _handle = this.handle;

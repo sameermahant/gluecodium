@@ -44,7 +44,6 @@ import com.here.gluecodium.model.lime.LimeReturnType
 import com.here.gluecodium.model.lime.LimeSet
 import com.here.gluecodium.model.lime.LimeStruct
 import com.here.gluecodium.model.lime.LimeType
-import com.here.gluecodium.model.lime.LimeTypeAlias
 import com.here.gluecodium.model.lime.LimeTypeRef
 import com.here.gluecodium.model.lime.LimeTypesCollection
 import com.here.gluecodium.model.lime.LimeValue
@@ -70,7 +69,6 @@ internal class DartNameResolver(
             is LimeValue -> resolveValue(element)
             is LimeGenericType -> resolveGenericType(element)
             is LimeTypeRef -> resolveTypeRefName(element)
-            is LimeTypeAlias -> resolveName(element.typeRef)
             is LimeType -> resolveType(element)
             is LimeNamedElement -> getPlatformName(element)
             else ->
@@ -207,7 +205,7 @@ internal class DartNameResolver(
 
     private fun resolveTypeRefName(limeTypeRef: LimeTypeRef): String {
         val typeName = resolveName(limeTypeRef.type)
-        val alias = limeTypeRef.type.actualType.external?.dart?.get(IMPORT_PATH_NAME)?.let { computeAlias(it) }
+        val alias = limeTypeRef.type.external?.dart?.get(IMPORT_PATH_NAME)?.let { computeAlias(it) }
         val suffix = if (limeTypeRef.isNullable) "?" else ""
         return listOfNotNull(alias, typeName).joinToString(".") + suffix
     }

@@ -155,7 +155,7 @@ internal class DartGenerator : Generator {
 
         val predicates = DartGeneratorPredicates(dartFilteredModel.referenceMap, activeTags).predicates
         val generatedFiles = dartFilteredModel.topElements.flatMap {
-            listOfNotNull(
+            listOf(
                 generateDart(
                     it, dartResolvers, dartNameResolver, listOf(importsCollector, declarationImportsCollector),
                     exportsCollector, typeRepositoriesCollector, predicates
@@ -184,15 +184,15 @@ internal class DartGenerator : Generator {
         exportsCollector: MutableMap<List<String>, MutableList<DartExport>>,
         typeRepositoriesCollector: MutableList<LimeContainerWithInheritance>,
         predicates: Map<String, (Any) -> Boolean>
-    ): GeneratedFile? {
-        val contentTemplateName = selectTemplate(rootElement) ?: return null
+    ): GeneratedFile {
+        val contentTemplateName = selectTemplate(rootElement)
 
         val packagePath = rootElement.path.head.joinToString(separator = "/")
         val fileName = dartNameResolver.resolveFileName(rootElement)
         val filePath = "$packagePath/$fileName"
         val relativePath = "$SRC_DIR_SUFFIX/$filePath.dart"
 
-        val allTypes = LimeTypeHelper.getAllTypes(rootElement).filterNot { it is LimeTypeAlias }
+        val allTypes = LimeTypeHelper.getAllTypes(rootElement)
         val nonExternalTypes = allTypes.filter { it.external?.dart == null }
         val freeConstants = (rootElement as? LimeTypesCollection)?.constants ?: emptyList()
         val allSymbols =
@@ -500,7 +500,7 @@ internal class DartGenerator : Generator {
             is LimeEnumeration -> "dart/DartEnumeration"
             is LimeException -> "dart/DartException"
             is LimeLambda -> "dart/DartLambda"
-            is LimeTypeAlias -> null
+            is LimeTypeAlias -> "dart/DartTypeAlias"
             else -> throw GluecodiumExecutionException(
                 "Unsupported top-level element: " +
                     limeElement::class.java.name

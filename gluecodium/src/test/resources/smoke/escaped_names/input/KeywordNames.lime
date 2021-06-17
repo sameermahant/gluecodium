@@ -29,6 +29,7 @@ types `types` {
 
     exception `exception`(`enum`)
 
+    @Dart("List_Struct")
     typealias `List` = List<`struct`>
 
     @Dart("Const")

@@ -15,6 +15,9 @@ abstract class Dates {
   Set<DateTime> get dateSet;
   set dateSet(Set<DateTime> value);
 }
+typedef Dates_DateTypeDef = DateTime;
+typedef Dates_DateArray = List<DateTime>;
+typedef Dates_DateMap = Map<String, DateTime>;
 class Dates_DateStruct {
   DateTime dateField;
   DateTime? nullableDateField;

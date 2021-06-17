@@ -1,5 +1,6 @@
 package `package`
 types `types` {
+    @Dart("List_Struct")
     typealias `List` = List<`struct`>
     enum `enum` {
         `NaN`

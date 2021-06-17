@@ -3,6 +3,7 @@ import 'package:library/src/_library_context.dart' as __lib;
 import 'package:library/src/_native_base.dart' as __lib;
 import 'package:library/src/_token_cache.dart' as __lib;
 import 'package:library/src/builtin_types__conversion.dart';
+import 'package:library/src/generic_types__conversion.dart';
 import 'package:meta/meta.dart';
 abstract class Enums {
   /// @nodoc
@@ -16,6 +17,7 @@ abstract class Enums {
   @visibleForTesting
   static dynamic $prototype = Enums$Impl(Pointer<Void>.fromAddress(0));
 }
+typedef Enums_ExampleMap = Map<Enums_SimpleEnum, int>;
 enum Enums_SimpleEnum {
     first,
     second
